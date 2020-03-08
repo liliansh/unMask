@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <div>
+    <title> Hello!</title>
+    <h1>Hii!</h1>
+</div>
+</head>
+<body>
+    <div>
+    <label>First Somthing</label>
+    <input id="txtname">
+    </div>
+    <div>
+       <label>Second Somthing</label> <input id="txtname2">
+    </div>
+</body>
+<script>
+   window.onload = function(){
+			unMask("#txtname" , "#txtname2");
+		}
+
+		function unMask(firstElm, secondElem) {
+			document.querySelector(firstElm).addEventListener("input", function() {
+				document.querySelector(secondElem).value = this.value;
+			});
+		}
+
+
+
+        function doOnlyWhen(toDoHandler,toCheckHandler,interval ,times,failHandler  ){
+            if (times==0){
+              failHandler();
+              return;
+             }
+            setTimeout(function(){
+              if(toCheckHandler){
+                toDoHandler();
+                }else{
+              doOnlyWhen(toDoHandler,toCheckHandler,interval ,times-1,failHandler  )
+                }
+             },interval);
+
+         }
+         
+
+
+    function isVisible(e){
+        if(e && e.offsetParent){
+            return true;
+        }
+        return false;
+    }
+
+
+
+    function createStyle(selector,rule){
+        document.querySelector(selector).setAttribute('style',rule);
+
+    }
+    
+
+
+
+</script>
